@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import ingredientsData from '../data/ingredients.json'
-import List from './components/list'
 import Autosuggest from 'react-autosuggest'
 
 const data = ingredientsData.ingredients
@@ -37,7 +36,7 @@ class SkyrimIngredientsApp extends Component {
     super()
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: data
     }
   }
 
@@ -53,12 +52,6 @@ class SkyrimIngredientsApp extends Component {
     })
   }
 
-  onSuggestionsClearRequested = () => {
-    this.setState({
-      suggestions: []
-    })
-  }
-
   render() {
     const {
       value,
@@ -68,23 +61,45 @@ class SkyrimIngredientsApp extends Component {
     const inputProps = {
       placeholder: 'Enter effect',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+    }
+
+    const theme = {
+      input: {
+        padding: '10px 20px',
+        borderRadius: '4px',
+        width: '100%',
+        border: '1px solid #aaa',
+        background: 'transparent',
+        color: 'white',
+        fontSize: '16px'
+      },
+      inputFocused: {
+        outline: 'none'
+      },
+      suggestionsContainer: {
+        padding: '1rem'
+      },
+      suggestion: {
+        listStyle: 'none',
+        padding: '0.25rem',
+      }
     }
 
     return (
       <div className="container">
-        <div className="grid">
-          <div className="col-12">
+        <div className="grid justify-center">
+          <div className="col-12 col-sm-6">
             <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
+              alwaysRenderSuggestions
+              theme={theme}
             />
           </div>
-          <List data={ingredientsData} />
         </div>
       </div>
     )
