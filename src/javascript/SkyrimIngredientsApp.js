@@ -87,9 +87,16 @@ class SkyrimIngredientsApp extends Component {
       suggestionsContainer: {
         padding: '1rem'
       },
+      suggestionsList: {
+        padding: '0'
+      },
       suggestion: {
         listStyle: 'none',
-        padding: '0.25rem',
+        padding: '0.3rem',
+      },
+      suggestionHighlighted: {
+        boxShadow: '0px 0px 15px 0px rgba(0,0,0,0.5)',
+        cursor: 'pointer'
       }
     }
 
