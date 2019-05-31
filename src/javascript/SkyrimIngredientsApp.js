@@ -4,6 +4,13 @@ import Autosuggest from 'react-autosuggest'
 
 const data = ingredientsData.ingredients
 
+const initialData = data.map(e => e.effects)
+const mergedEffects = [].concat.apply([], initialData)
+const uniqueEffects = [...new Set(mergedEffects)]
+uniqueEffects.sort()
+const effectsArr = []
+uniqueEffects.forEach(e => effectsArr.push({ name: e }))
+
 const getSuggestions = (value) => {
   const inputValue = value.trim().toLowerCase()
   const inputLength = inputValue.length
@@ -20,7 +27,7 @@ const getSuggestions = (value) => {
     const nameB = b.name.toLowerCase()
     return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
   })
-  return inputLength === 0 ? [] : filteredList
+  return inputLength === 0 ? effectsArr : filteredList
 }
 
 const getSuggestionValue = suggestion => suggestion.name
@@ -36,7 +43,7 @@ class SkyrimIngredientsApp extends Component {
     super()
     this.state = {
       value: '',
-      suggestions: data
+      suggestions: effectsArr
     }
   }
 
