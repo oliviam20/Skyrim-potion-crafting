@@ -16,6 +16,11 @@ const getSuggestions = (value) => {
     return filteredEffects.length > 0 && e
   })
 
+  filteredList.sort((a, b) => {
+    const nameA = a.name.toLowerCase()
+    const nameB = b.name.toLowerCase()
+    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
+  })
   return inputLength === 0 ? [] : filteredList
 }
 
