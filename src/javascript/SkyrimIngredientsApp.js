@@ -6,12 +6,17 @@ import Autosuggest from 'react-autosuggest'
 const data = ingredientsData.ingredients
 
 const getSuggestions = (value) => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
+  const inputValue = value.trim().toLowerCase()
+  const inputLength = inputValue.length
 
-  return inputLength === 0 ? [] : data.filter(ingred =>
-    ingred.name.toLowerCase().slice(0, inputLength) === inputValue
-  )
+  const filteredList = data.filter((e) => {
+    const filteredEffects = e.effects.filter((effects) => {
+      return effects.toLowerCase().slice(0, inputLength) === inputValue
+    })
+    return filteredEffects.length > 0 && e
+  })
+
+  return inputLength === 0 ? [] : filteredList
 }
 
 const getSuggestionValue = suggestion => suggestion.name
@@ -64,14 +69,16 @@ class SkyrimIngredientsApp extends Component {
     return (
       <div className="container">
         <div className="grid">
-          <Autosuggest
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={inputProps}
-          />
+          <div className="col-12">
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputProps}
+            />
+          </div>
           <List data={ingredientsData} />
         </div>
       </div>
