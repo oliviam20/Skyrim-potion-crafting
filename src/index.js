@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './stylesheets/reflex_grid.css'
+import './stylesheets/index.css'
 import SkyrimIngredientsApp from './javascript/SkyrimIngredientsApp'
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(<SkyrimIngredientsApp />, document.getElementById('root'))
 
