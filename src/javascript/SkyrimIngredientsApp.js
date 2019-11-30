@@ -78,7 +78,6 @@ class SkyrimIngredientsApp extends Component {
         width: '85%',
         border: '1px solid #aaa',
         background: 'transparent',
-        color: 'white',
         fontSize: '16px'
       },
       inputFocused: {
