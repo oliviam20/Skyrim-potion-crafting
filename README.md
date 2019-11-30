@@ -1,4 +1,4 @@
-This app is deployed to [https://skyrim-potions-engine.netlify.com](https://skyrim-potions-engine.netlify.com)
+This app is deployed to [https://skyrimpotionsengine.netlify.com](https://skyrimpotionsengine.netlify.com/)
 
 This is dependant on [React Autosuggest](https://github.com/moroshko/react-autosuggest).
 
