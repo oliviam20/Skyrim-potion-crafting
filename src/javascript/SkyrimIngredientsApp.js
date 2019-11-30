@@ -11,32 +11,7 @@ uniqueEffects.sort()
 const effectsArr = []
 uniqueEffects.forEach(e => effectsArr.push({ name: e }))
 
-const getSuggestions = (value) => {
-  const inputValue = value.trim().toLowerCase()
-  const inputLength = inputValue.length
-
-  const filteredList = data.filter((e) => {
-    const filteredEffects = e.effects.filter((effects) => {
-      return effects.toLowerCase().slice(0, inputLength) === inputValue
-    })
-    return filteredEffects.length > 0 && e
-  })
-
-  filteredList.sort((a, b) => {
-    const nameA = a.name.toLowerCase()
-    const nameB = b.name.toLowerCase()
-    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
-  })
-  return inputLength === 0 ? effectsArr : filteredList
-}
-
 const getSuggestionValue = suggestion => suggestion.name
-
-const renderSuggestion = suggestion => (
-  <Fragment>
-    {suggestion.name}
-  </Fragment>
-)
 
 class SkyrimIngredientsApp extends Component {
   constructor() {
@@ -47,6 +22,44 @@ class SkyrimIngredientsApp extends Component {
     }
   }
 
+  getSuggestions = (value) => {
+  const inputValue = value.trim().toLowerCase()
+
+  const filteredList = data.filter((e) => {
+    const filteredEffects = e.effects.filter((effects) => {
+      return effects.toLowerCase().trim() === inputValue
+    })
+    return filteredEffects.length > 0 && e
+  })
+
+  // sort list in alphabetical order
+  filteredList.sort((a, b) => {
+    const nameA = a.name.toLowerCase()
+    const nameB = b.name.toLowerCase()
+    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
+  })
+
+  // if input is effect, return ingredient list
+  if (effectsArr.some(effect => effect.name.toLowerCase() === inputValue)) {
+    return filteredList
+  }
+
+  // if input is ingredient, return effect list for that ingredient
+  const ingredientName = data.find(e => e.name.toLowerCase() === inputValue)
+  if (ingredientName) {
+    return ingredientName.effects.map(effect => ({ 'name': effect }))
+  }
+
+  // default rendered list
+  return effectsArr
+}
+
+  renderSuggestion = suggestion => (
+    <Fragment>
+      {suggestion.name}
+    </Fragment>
+  )
+
   onChange = (event, { newValue }) => {
     this.setState({
       value: newValue
@@ -55,7 +68,7 @@ class SkyrimIngredientsApp extends Component {
 
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     })
   }
 
@@ -106,7 +119,7 @@ class SkyrimIngredientsApp extends Component {
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               getSuggestionValue={getSuggestionValue}
-              renderSuggestion={renderSuggestion}
+              renderSuggestion={this.renderSuggestion}
               inputProps={inputProps}
               alwaysRenderSuggestions
               theme={theme}
