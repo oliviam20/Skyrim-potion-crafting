@@ -75,7 +75,7 @@ class SkyrimIngredientsApp extends Component {
       input: {
         padding: '10px 20px',
         borderRadius: '4px',
-        width: '100%',
+        width: '85%',
         border: '1px solid #aaa',
         background: 'transparent',
         color: 'white',
@@ -95,7 +95,6 @@ class SkyrimIngredientsApp extends Component {
         padding: '0.3rem',
       },
       suggestionHighlighted: {
-        boxShadow: '0px 0px 15px 0px rgba(0,0,0,0.5)',
         cursor: 'pointer'
       }
     }
