@@ -1,4 +1,4 @@
-This app is deployed to [https://skyrimpotionsengine.com](https://skyrimpotionsengine.com/)
+This app is deployed to [https://www.skyrimpotionsengine.com/](https://www.skyrimpotionsengine.com/)
 
 This is dependant on [React Autosuggest](https://github.com/moroshko/react-autosuggest).
 
