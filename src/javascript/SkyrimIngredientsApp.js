@@ -79,7 +79,7 @@ class SkyrimIngredientsApp extends Component {
     } = this.state
 
     const inputProps = {
-      placeholder: 'Enter effect',
+      placeholder: 'Enter effect or ingredient',
       value,
       onChange: this.onChange,
     }
