@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import ingredientsData from '../data/ingredients.json'
 import Autosuggest from 'react-autosuggest'
+import Btn from './Btn';
 
 const data = ingredientsData.ingredients
 
@@ -18,7 +19,9 @@ class SkyrimIngredientsApp extends Component {
     super()
     this.state = {
       value: '',
-      suggestions: effectsArr
+      suggestions: effectsArr,
+      potionTabActive: true,
+      ingredientTabActive: false
     }
   }
 
@@ -72,6 +75,20 @@ class SkyrimIngredientsApp extends Component {
     })
   }
 
+  potionsTab = () => {
+    this.setState({
+      potionTabActive: true,
+      ingredientTabActive: false
+    });
+  }
+
+  ingredientsTab = () => {
+    this.setState({
+      potionTabActive: false,
+      ingredientTabActive: true
+    });
+  }
+
   render() {
     const {
       value,
@@ -113,6 +130,16 @@ class SkyrimIngredientsApp extends Component {
 
     return (
       <div className="container">
+        <div className="tab-container">
+          <Btn
+            text="Potions"
+            onClick={this.potionsTab}
+          />
+          <Btn
+            text="Ingredients"
+            onClick={this.ingredientsTab}
+          />
+        </div>
         <div className="grid justify-center">
           <div className="col-12 col-sm-6">
             <Autosuggest

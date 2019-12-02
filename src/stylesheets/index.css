@@ -3,4 +3,14 @@ body {
           box-sizing: border-box;
   font-family: Helvetica, sans-serif;
 }
+
+.tab-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
 /*# sourceMappingURL=index.css.map */
