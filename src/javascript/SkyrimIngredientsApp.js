@@ -127,12 +127,19 @@ class SkyrimIngredientsApp extends Component {
       width: '320px'
     };
 
+    const clearBtnStyles = {
+      border: '0',
+      backgroundColor: 'transparent',
+      position: 'absolute',
+      right: '1rem',
+      top: '0.49rem',
+      margin: '0',
+      padding: '0'
+    };
+
     const clearStyles = {
       cursor: 'pointer',
       fontSize: '1.5rem',
-      position: 'absolute',
-      right: '1rem',
-      top: '0.55rem'
     };
 
     return (
@@ -144,10 +151,12 @@ class SkyrimIngredientsApp extends Component {
         </form>
         <p style={{ textAlign: 'center' }}>Thank you for using Skyrim Potions Engine! If you found it useful, please consider donating a small amount <span aria-label="smiley face" role="img">😊</span></p>
         <div style={autoSuggestWrapperStyle}>
-          {value && <FiX
-            onClick={this.onClearClick}
-            style={clearStyles}
-          />}
+          {value && <button style={clearBtnStyles}>
+            <FiX
+              onClick={this.onClearClick}
+              style={clearStyles}
+            />
+          </button>}
           <Autosuggest
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
