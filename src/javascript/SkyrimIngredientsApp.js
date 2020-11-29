@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import ingredientsData from '../data/ingredients.json'
 import Autosuggest from 'react-autosuggest'
+import { FiX } from 'react-icons/fi'
 
 const data = ingredientsData.ingredients
 
@@ -72,6 +73,10 @@ class SkyrimIngredientsApp extends Component {
     })
   }
 
+  onClearClick = () => {
+    this.setState({ value: '' });
+  }
+
   render() {
     const {
       value,
@@ -118,7 +123,16 @@ class SkyrimIngredientsApp extends Component {
     };
 
     const autoSuggestWrapperStyle = {
+      position: 'relative',
       width: '320px'
+    };
+
+    const clearStyles = {
+      cursor: 'pointer',
+      fontSize: '1.5rem',
+      position: 'absolute',
+      right: '1rem',
+      top: '0.55rem'
     };
 
     return (
@@ -128,8 +142,12 @@ class SkyrimIngredientsApp extends Component {
           <input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
           <img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
         </form>
-        <p style={{ textAlign: 'center' }}>Thanks for using Skyrim Potions Engine! If you found it useful, please consider donating a small amount <span aria-label="smiley face" role="img">😊</span></p>
+        <p style={{ textAlign: 'center' }}>Thank you for using Skyrim Potions Engine! If you found it useful, please consider donating a small amount <span aria-label="smiley face" role="img">😊</span></p>
         <div style={autoSuggestWrapperStyle}>
+          {value && <FiX
+            onClick={this.onClearClick}
+            style={clearStyles}
+          />}
           <Autosuggest
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
