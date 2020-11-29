@@ -111,20 +111,34 @@ class SkyrimIngredientsApp extends Component {
       }
     }
 
+    const wrapperStyles = {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    };
+
+    const autoSuggestWrapperStyle = {
+      width: '320px'
+    };
+
     return (
-      <div className="container">
-        <div className="grid justify-center">
-          <div className="col-12 col-sm-6">
-            <Autosuggest
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={this.renderSuggestion}
-              inputProps={inputProps}
-              alwaysRenderSuggestions
-              theme={theme}
-            />
-          </div>
+      <div style={wrapperStyles}>
+        <form style={{ marginTop: '1rem' }} action="https://www.paypal.com/donate" method="post" target="_top">
+          <input type="hidden" name="hosted_button_id" value="H4CSD24TH6V8S" />
+          <input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+          <img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+        <p style={{ textAlign: 'center' }}>Thanks for using my search! If you found it useful, please consider donating a small amount so I can cover the annual domain cost <span aria-label="smiley face" role="img">😊</span></p>
+        <div style={autoSuggestWrapperStyle}>
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={this.renderSuggestion}
+            inputProps={inputProps}
+            alwaysRenderSuggestions
+            theme={theme}
+          />
         </div>
       </div>
     )
