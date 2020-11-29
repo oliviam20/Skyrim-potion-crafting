@@ -128,7 +128,7 @@ class SkyrimIngredientsApp extends Component {
           <input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
           <img alt="" border="0" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1" />
         </form>
-        <p style={{ textAlign: 'center' }}>Thanks for using my search! If you found it useful, please consider donating a small amount so I can cover the annual domain cost <span aria-label="smiley face" role="img">😊</span></p>
+        <p style={{ textAlign: 'center' }}>Thanks for using Skyrim Potions Engine! If you found it useful, please consider donating a small amount <span aria-label="smiley face" role="img">😊</span></p>
         <div style={autoSuggestWrapperStyle}>
           <Autosuggest
             suggestions={suggestions}
