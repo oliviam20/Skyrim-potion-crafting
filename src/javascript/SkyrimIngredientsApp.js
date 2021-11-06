@@ -140,9 +140,8 @@ class SkyrimIngredientsApp extends Component {
     return (
       <div style={wrapperStyles}>
         <p style={{ textAlign: "center" }}>
-          On November 30th, this site will be moved to{" "}
-          <strong>https://skyrimpotionsengine.netlify.app</strong> to keep it
-          free for use.
+          On November 30th 2021, this site will be moved to{" "}
+          <strong>https://skyrimpotionsengine.netlify.app</strong>
         </p>
         <form
           style={{ marginTop: "1rem" }}
