@@ -168,7 +168,14 @@ class SkyrimIngredientsApp extends Component {
         </form>
         <p style={{ textAlign: "center" }}>
           Thank you for using Skyrim Potions Engine! If you found it useful,
-          please consider donating a small amount{" "}
+          please consider{" "}
+          <a
+            href="https://www.buymeacoffee.com/milkteadrinker"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            buying me a cup of coffee
+          </a>{" "}
           <span aria-label="smiley face" role="img">
             😊
           </span>
